@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2305C23C23B7307D001706FC /* EventCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2305C23B23B7307D001706FC /* EventCard.swift */; };
+		2305C23F23B73E77001706FC /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2305C23E23B73E77001706FC /* ExitButton.swift */; };
+		2305C24123B74204001706FC /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2305C24023B74204001706FC /* Color.xcassets */; };
 		238F424E23AF6FD700CD9F06 /* EventType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238F424D23AF6FD700CD9F06 /* EventType.swift */; };
 		238F425023AF716A00CD9F06 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238F424F23AF716A00CD9F06 /* Event.swift */; };
 		238F425223AF720E00CD9F06 /* TicketMasterParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238F425123AF720E00CD9F06 /* TicketMasterParser.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2305C23B23B7307D001706FC /* EventCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCard.swift; sourceTree = "<group>"; };
+		2305C23E23B73E77001706FC /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
+		2305C24023B74204001706FC /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		238F424D23AF6FD700CD9F06 /* EventType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventType.swift; sourceTree = "<group>"; };
 		238F424F23AF716A00CD9F06 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		238F425123AF720E00CD9F06 /* TicketMasterParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketMasterParser.swift; sourceTree = "<group>"; };
@@ -51,6 +57,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2305C23923B72E73001706FC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2305C23D23B73E65001706FC /* Buttons */,
+				2305C23A23B72E88001706FC /* EventCard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		2305C23A23B72E88001706FC /* EventCard */ = {
+			isa = PBXGroup;
+			children = (
+				2305C23B23B7307D001706FC /* EventCard.swift */,
+			);
+			name = EventCard;
+			sourceTree = "<group>";
+		};
+		2305C23D23B73E65001706FC /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				2305C23E23B73E77001706FC /* ExitButton.swift */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
 		238F424723AF6CBB00CD9F06 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -119,8 +150,10 @@
 				23F6292723AEB4140056E3E7 /* LaunchScreen.storyboard */,
 				23F6292A23AEB4140056E3E7 /* Info.plist */,
 				23F6292223AEB4140056E3E7 /* Assets.xcassets */,
+				2305C24023B74204001706FC /* Color.xcassets */,
 				23F6293023AEB41F0056E3E7 /* Delegates */,
 				238F424723AF6CBB00CD9F06 /* Model */,
+				2305C23923B72E73001706FC /* Views */,
 				23F6292023AEB4130056E3E7 /* ContentView.swift */,
 				23F6292423AEB4140056E3E7 /* Preview Content */,
 			);
@@ -203,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F6292923AEB4140056E3E7 /* LaunchScreen.storyboard in Resources */,
+				2305C24123B74204001706FC /* Color.xcassets in Resources */,
 				23F6292623AEB4140056E3E7 /* Preview Assets.xcassets in Resources */,
 				23F6292323AEB4140056E3E7 /* Assets.xcassets in Resources */,
 			);
@@ -216,8 +250,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				23F6291D23AEB4130056E3E7 /* AppDelegate.swift in Sources */,
+				2305C23F23B73E77001706FC /* ExitButton.swift in Sources */,
 				238F425923AF7F6600CD9F06 /* Networking.swift in Sources */,
 				23F6291F23AEB4130056E3E7 /* SceneDelegate.swift in Sources */,
+				2305C23C23B7307D001706FC /* EventCard.swift in Sources */,
 				238F425423AF721F00CD9F06 /* TicketMasterApi.swift in Sources */,
 				23F6293323AEB4760056E3E7 /* EventInfo.swift in Sources */,
 				238F424E23AF6FD700CD9F06 /* EventType.swift in Sources */,

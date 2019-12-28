@@ -17,7 +17,7 @@ fileprivate let apiKey = ""
  @Return - Event array
  */
 func fetchTicketMasterEvents() -> [Event] {
-    switch fetchDataFromUrl(from: ticketMasterUrl, parsingHandler: ticketMasterDiscoveryParser) {
+    switch fetchJsonFromUrl(from: ticketMasterUrl, parsingHandler: ticketMasterDiscoveryParser) {
     case .success(let events):
         return events
     case .failure:

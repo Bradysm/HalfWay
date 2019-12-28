@@ -16,22 +16,20 @@ import Foundation
  @Param - parsingHandler: completion handler that takes a type of Any which is a json object, it is then expected to parse this object and return a result containing the data on success
  @Return - result containing success or failure from the API request
  */
-func fetchDataFromUrl<ApiData>(from urlString: String, parsingHandler: @escaping (Any) -> Result<ApiData, NetworkError>) -> Result<ApiData, NetworkError> {
+func fetchJsonFromUrl<ApiData>(from urlString: String, parsingHandler: @escaping (Any) -> Result<ApiData, NetworkError>) -> Result<ApiData, NetworkError> {
     guard let url = URL(string: urlString) else { return .failure(.invalidUrl) }
     
-    // set default to bad request and then make API call using a semaphore for synchronization
-    var result: Result<ApiData, NetworkError> = .failure(.badRequest)
+    // make API call using a semaphore for synchronization
+    var result: Result<ApiData, NetworkError>!
     let semaphore = DispatchSemaphore(value: 0)
     URLSession.shared.dataTask(with: url) { (data, res, err) in
         
         // check for networking errors
-        if let _ = err { semaphore.signal(); return }
+        if let _ = err { result = .failure(.badRequest); semaphore.signal(); return }
         
-        // unwrap data, signal if empty data and return
-        guard let data = data else { result = .failure(.emptyData); semaphore.signal(); return }
-        
-        // decode JSON and call parser
+        // try to serialize JSON data and call parser
         do {
+            guard let data = data else { result = .failure(.emptyData); semaphore.signal(); return }
             let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
             result = parsingHandler(json)
             semaphore.signal()
@@ -39,14 +37,11 @@ func fetchDataFromUrl<ApiData>(from urlString: String, parsingHandler: @escaping
             result = .failure(.invalidJsonData)
             semaphore.signal()
         }
-        
     }.resume()
     
-
     // wait for 8 seconds and then call it a day, notify a network timeout
     if semaphore.wait(timeout: .now() + 8.0) == .timedOut {
         result = .failure(.networkTimeout)
     }
-        
     return result
 }

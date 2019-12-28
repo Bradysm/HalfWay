@@ -16,23 +16,23 @@ enum EventType {
 }
 
 
-extension EventType {
-    
-    /**
-     Function which decodes a string representing the event type and returns an Enum describing the type of event
-     */
-    func getType(_ eventType: String) -> EventType {
-        if eventType.contains("sport") {
-            return .sports
-        } else if eventType.contains("food") || eventType.contains("restaurant") {
-            return .food
-        } else if eventType.contains("entertainment") {
-            return .entertainment
-        } else if eventType.contains("gym") || eventType.contains("fitness") || eventType.contains("exercise") {
-            return .fitness
-        } else if eventType.contains("crafts") || eventType.contains("art") {
-            return .artsAndCrafts
-        }
-        return .general
+
+/**
+ Function which decodes a string representing the event type and returns an Enum describing the type of event
+ */
+func getEventType(_ eventType: String) -> EventType {
+    let lowerEventType = eventType.lowercased()
+    if lowerEventType.contains("sport") {
+        return .sports
+    } else if lowerEventType.contains("food") || lowerEventType.contains("restaurant") {
+        return .food
+    } else if lowerEventType.contains("entertainment") {
+        return .entertainment
+    } else if lowerEventType.contains("gym") || lowerEventType.contains("fitness") || lowerEventType.contains("exercise") {
+        return .fitness
+    } else if lowerEventType.contains("crafts") || lowerEventType.contains("art") {
+        return .artsAndCrafts
     }
+    return .general
 }
+
